@@ -1,14 +1,22 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { X, Minus, Plus, ShoppingBag } from 'lucide-react';
 import { useCart } from '../context/CartContext';
+import { formatCurrency } from '../utils/formatCurrency';
 
 export function Cart() {
   const { state, dispatch } = useCart();
+  const navigate = useNavigate();
   
   const subtotal = state.items.reduce(
-    (sum, item) => sum + item.price * item.quantity,
+    (sum, item) => sum + (item.price || 0) * item.quantity,
     0
   );
+
+  const handleCheckout = () => {
+    dispatch({ type: 'TOGGLE_CART' });
+    navigate('/checkout');
+  };
 
   if (!state.isOpen) return null;
 
@@ -17,7 +25,7 @@ export function Cart() {
       <div className="absolute inset-0 bg-black bg-opacity-50" 
            onClick={() => dispatch({ type: 'TOGGLE_CART' })} />
       
-      <div className="absolute right-0 top-0 h-full w-full max-w-md bg-gray-900 shadow-xl">
+      <div className="absolute right-0 top-0 h-full w-full max-w-md bg-spotify-darkgray shadow-xl">
         <div className="flex h-full flex-col">
           <div className="flex items-center justify-between px-4 py-6 border-b border-gray-800">
             <h2 className="text-lg font-semibold text-white">Shopping Cart</h2>
@@ -37,8 +45,8 @@ export function Cart() {
                 {state.items.map((item) => (
                   <div key={item.id} className="flex py-6 border-b border-gray-800">
                     <img
-                      src={item.image}
-                      alt={item.title}
+                      src={item.images?.[0]?.url || ''}
+                      alt={item.images?.[0]?.alt || item.title}
                       className="h-24 w-24 rounded-md object-cover"
                     />
                     <div className="ml-4 flex flex-1 flex-col">
@@ -53,7 +61,7 @@ export function Cart() {
                         </button>
                       </div>
                       <p className="mt-1 text-sm text-gray-400">
-                        ${item.price.toFixed(2)}
+                        {formatCurrency(item.price)}
                       </p>
                       <div className="mt-2 flex items-center">
                         <button
@@ -96,18 +104,14 @@ export function Cart() {
               <div className="border-t border-gray-800 px-4 py-6">
                 <div className="flex justify-between text-base font-medium text-white">
                   <p>Subtotal</p>
-                  <p>${subtotal.toFixed(2)}</p>
+                  <p>{formatCurrency(subtotal)}</p>
                 </div>
                 <p className="mt-1 text-sm text-gray-400">
                   Shipping and taxes calculated at checkout.
                 </p>
                 <button
-                  className="mt-6 w-full rounded-md bg-green-500 px-4 py-3 text-black font-semibold hover:bg-green-400 transition-colors"
-                  onClick={() => {
-                    alert('Proceeding to checkout...');
-                    dispatch({ type: 'CLEAR_CART' });
-                    dispatch({ type: 'TOGGLE_CART' });
-                  }}
+                  className="mt-6 w-full rounded-full bg-spotify-green px-4 py-3 text-black font-semibold hover:bg-green-400 transition-all duration-300 transform hover:scale-105"
+                  onClick={handleCheckout}
                 >
                   Checkout
                 </button>

@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Syncopate:wght@400;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -5,6 +8,52 @@
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(20px); }
   to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes underline {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+  100% { transform: translateY(0px); }
+}
+
+@keyframes dashSmall {
+  to {
+    stroke-dashoffset: 40;
+  }
+}
+
+@keyframes dashLarge {
+  to {
+    stroke-dashoffset: 200;
+  }
+}
+
+@keyframes floatParticle {
+  0%, 100% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(20px, -20px);
+  }
+}
+
+.animate-dash-small {
+  stroke-dasharray: 20;
+  animation: dashSmall 2s linear infinite;
+}
+
+.animate-dash-large {
+  stroke-dasharray: 100;
+  animation: dashLarge 4s linear infinite;
+}
+
+.animate-float-particle {
+  animation: floatParticle 5s ease-in-out infinite;
 }
 
 .animate-fade-in {
@@ -21,6 +70,15 @@
   opacity: 0;
 }
 
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-underline {
+  animation: underline 1s ease-out 0.8s forwards;
+  transform: scaleX(0);
+}
+
 body {
   margin: 0;
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto',
@@ -28,5 +86,5 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  @apply bg-black text-gray-300;
+  @apply bg-spotify-black text-spotify-lightgray;
 }
