@@ -21,15 +21,20 @@ export function Hero() {
               Your Go-To for Campus Shopping
             </span>
             <span className="block text-white text-2xl md:text-3xl mt-4 relative inline-block">
-              At UPES, Dehradun
+              At UPES Bidholi, Dehradun
               <span className="absolute bottom-0 left-0 w-full h-0.5 bg-spotify-green animate-underline"></span>
             </span>
           </h1>
           
-          <p className="text-xl text-white mb-12 max-w-2xl animate-fade-in-delay">
-            Discover college merchandise at exclusive student prices.
-            Join thousands of students making smart choices for their education.
+          <p className="text-2xl text-white mb-2 max-w-2xl animate-fade-in-delay">
+            Purchase unique student-made products,all within campus.
           </p>
+          <span className="text-2xl text-spotify-green mb-12 max-w-2xl animate-fade-in-delay font-bold">
+    Made by UPES students for UPES students.
+          <span className="absolute bottom-0 left-0 w-full h-0.5 bg-white animate-underline"></span>
+
+          </span>
+
           
           <div className="flex flex-col sm:flex-row gap-6 justify-center animate-fade-in-delay-2">
             <Link to="/clothing"

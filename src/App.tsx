@@ -11,6 +11,7 @@ import { ClothingPage } from './pages/ClothingPage';
 import { AccessoriesPage } from './pages/AccessoriesPage';
 import { AboutPage } from './pages/AboutPage';
 import { CheckoutPage } from './pages/CheckoutPage';
+import { PolicyPages } from './pages/PolicyPages';
 
 export default function App() {
   return (
@@ -26,6 +27,10 @@ export default function App() {
               <Route path="/accessories" element={<AccessoriesPage />} />
               <Route path="/about" element={<AboutPage />} />
               <Route path="/checkout" element={<CheckoutPage />} />
+              <Route path="/privacy" element={<PolicyPages />} />
+              <Route path="/terms" element={<PolicyPages />} />
+              <Route path="/shipping" element={<PolicyPages />} />
+              <Route path="/refund" element={<PolicyPages />} />
             </Routes>
           </div>
           <Footer />

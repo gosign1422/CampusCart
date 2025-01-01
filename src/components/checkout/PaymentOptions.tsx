@@ -14,7 +14,7 @@ interface PaymentOptionsProps {
 
 export function PaymentOptions({ amount, formData }: PaymentOptionsProps) {
   const [showQR, setShowQR] = useState(false);
-  const upiId = "8218995756@upi";
+  const upiId = "7037155173@upi";
   
   // Create UPI payment URL with proper encoding
   const upiUrl = encodeURI(`upi://pay?pa=${upiId}&pn=CampusCart&am=${amount}&cu=INR&tn=Order Payment from ${formData.name}`);

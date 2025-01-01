@@ -18,7 +18,7 @@ export const sellers: Seller[] = [
           }
         ],
         title: 'SATAN',
-        originalPrice: 3799,
+        originalPrice: 3750,
         price: 1499,
         type: 'Hoodie',
         description: 'Unveil the hidden truths with the Dark Descent "Satan" Hoodie. This provocative design features a corrupted Michelangelo statue, symbolizing the dark forces that can taint even the purest souls. 🔥😈🖤',
@@ -59,7 +59,7 @@ export const sellers: Seller[] = [
           }
         ],
         title: 'Youth In Flux',
-        originalPrice: 3799,
+        originalPrice: 3750,
         price: 1499,
         type: 'Hoodie',
         description: 'Feeling overwhelmed by the endless possibilities and pressures of modern life? The "Youth in Flux" Hoodie perfectly captures the essence of our generation, offering a visual representation of the dynamic changes and challenges faced by young adults today. 🌐✨🔄',
@@ -100,7 +100,7 @@ export const sellers: Seller[] = [
           }
         ],
         title: 'Free Will?',
-        originalPrice: 3799,
+        originalPrice: 3750,
         price: 1499,
         type: 'Hoodie',
         description: 'In a world where paths are often predetermined, the "Free Will" hoodie stands as a symbol of personal choice and expression. Crafted for those who dare to forge their own way, this hoodie is more than just a piece of clothing—it is a Declaration of Independence. 🛤️✊🔥',
@@ -141,7 +141,7 @@ export const sellers: Seller[] = [
           }
         ],
         title: 'Re-Incarnated',
-        originalPrice: 3799,
+        originalPrice: 3750,
         price: 1499,
         type: 'Hoodie',
         description: 'The "Re-incarnated" hoodie is more than just apparel—it is a testament to transformation and new beginnings. This hoodie is for anyone who believes in second chances—not just for themselves, but for the world. It is for those who stand at the edge of change and jump in, ready to make waves. Wear the "Re-incarnated" hoodie, and embrace the journey of continuous rebirth. 🌱🌀🌟',

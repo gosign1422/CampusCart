@@ -5,8 +5,8 @@ import { Link } from 'react-router-dom';
 export function Footer() {
   return (
     <footer className="bg-spotify-black text-spotify-lightgray">
-      <div className="container mx-auto px-4 py-16">
-        <div className="text-center mb-16">
+      <div className="container mx-auto px-4 py-12">
+        <div className="text-center mb-12">
           <Link to="/" className="inline-flex items-center justify-center space-x-2 mb-4">
             <div className="relative">
               <ShoppingBag size={32} className="text-spotify-green" />
@@ -14,45 +14,51 @@ export function Footer() {
             </div>
             <span className="text-2xl font-bold text-white">CampusCart</span>
           </Link>
-          <p className="text-sm max-w-md mx-auto">
-            Your one-stop shop for all campus essentials. Quality products at student-friendly prices.
+          <p className="text-base md:text-lg max-w-md mx-auto">
+            Created by <u><a href="https://x.com/gosign1422" className="hover:text-spotify-green transition-colors">Gosign</a></u>.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-12 pb-16 border-b border-gray-800">
-          <div className="text-center md:text-left">
-            <h3 className="text-white font-semibold mb-6">Quick Links</h3>
-            <ul className="space-y-3">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 pb-12 border-b border-gray-800">
+          <div className="text-center sm:text-left">
+            <h3 className="text-white font-semibold mb-4">Quick Links</h3>
+            <ul className="space-y-2">
+              <li>
+                <Link to="/" className="hover:text-spotify-green transition-colors">Home</Link>
+              </li>
               <li>
                 <Link to="/clothing" className="hover:text-spotify-green transition-colors">Clothing</Link>
               </li>
               <li>
-                <Link to="#about" className="hover:text-spotify-green transition-colors">About Us</Link>
+                <Link to="/accessories" className="hover:text-spotify-green transition-colors">Accessories</Link>
+              </li>
+              <li>
+                <Link to="/about" className="hover:text-spotify-green transition-colors">About Us</Link>
               </li>
             </ul>
           </div>
 
-          <div className="text-center md:text-left">
-            <h3 className="text-white font-semibold mb-6">Contact Us</h3>
-            <ul className="space-y-3">
-              <li className="flex items-center justify-center md:justify-start space-x-2">
-                <Mail size={16} className="text-spotify-green" />
-                <span>campuscart99@gmail.com</span>
+          <div className="text-center sm:text-left">
+            <h3 className="text-white font-semibold mb-4">Contact Us</h3>
+            <ul className="space-y-2">
+              <li className="flex items-center justify-center sm:justify-start space-x-2">
+                <Mail size={16} className="text-spotify-green flex-shrink-0" />
+                <span className="break-all">campuscart99@gmail.com</span>
               </li>
-              <li className="flex items-center justify-center md:justify-start space-x-2">
-                <Phone size={16} className="text-spotify-green" />
+              <li className="flex items-center justify-center sm:justify-start space-x-2">
+                <Phone size={16} className="text-spotify-green flex-shrink-0" />
                 <span>+91 7037155173</span>
               </li>
-              <li className="flex items-center justify-center md:justify-start space-x-2">
-                <MapPin size={16} className="text-spotify-green" />
+              <li className="flex items-center justify-center sm:justify-start space-x-2">
+                <MapPin size={16} className="text-spotify-green flex-shrink-0" />
                 <span>UPES Bidholi</span>
               </li>
             </ul>
           </div>
 
-          <div className="text-center md:text-left">
-            <h3 className="text-white font-semibold mb-6">Policies</h3>
-            <ul className="space-y-3">
+          <div className="text-center sm:text-left">
+            <h3 className="text-white font-semibold mb-4">Policies</h3>
+            <ul className="space-y-2">
               <li>
                 <Link to="/privacy" className="hover:text-spotify-green transition-colors">Privacy Policy</Link>
               </li>
@@ -68,11 +74,11 @@ export function Footer() {
             </ul>
           </div>
 
-          <div className="text-center md:text-left">
-            <h3 className="text-white font-semibold mb-6">Connect With Us</h3>
-            <div className="flex items-center justify-center md:justify-start space-x-4">
+          <div className="text-center sm:text-left">
+            <h3 className="text-white font-semibold mb-4">Connect With Us</h3>
+            <div className="flex items-center justify-center sm:justify-start">
               <a
-                href="https://instagram.com/celestia.in"
+                href="https://www.instagram.com/upes_campuscart/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-2 rounded-full border border-gray-800 hover:border-spotify-green hover:text-spotify-green transition-all duration-300"
@@ -83,7 +89,7 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="pt-8 text-center text-sm">
+        <div className="pt-6 text-center text-sm">
           <p>&copy; {new Date().getFullYear()} CampusCart. All rights reserved.</p>
         </div>
       </div>

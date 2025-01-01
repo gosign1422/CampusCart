@@ -23,6 +23,13 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
 
         <nav className="space-y-6">
           <Link 
+            to="/" 
+            onClick={onClose}
+            className="block text-lg font-bold tracking-wide hover:text-spotify-green transition-colors"
+          >
+            HOME
+          </Link>
+          <Link 
             to="/clothing" 
             onClick={onClose}
             className="block text-lg font-bold tracking-wide hover:text-spotify-green transition-colors"

@@ -24,6 +24,12 @@ export function Navbar() {
         
         <div className="hidden md:flex items-center space-x-12">
           <Link 
+            to="/" 
+            className="text-lg font-bold tracking-wide hover:text-spotify-green transition-all duration-300 hover:scale-105 transform"
+          >
+            HOME
+          </Link>
+          <Link 
             to="/clothing" 
             className="text-lg font-bold tracking-wide hover:text-spotify-green transition-all duration-300 hover:scale-105 transform"
           >
