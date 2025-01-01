@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import { X, ShoppingCart } from 'lucide-react';
 import { Product } from '../../types/product';
 import { useCart } from '../../context/CartContext';
-import { ProductImages } from '../ProductDetailModal/ProductImages';
-import { ProductDetails } from '../ProductDetailModal/ProductDetails';
-import { SizeSelector } from '../ProductDetailModal/SizeSelector';
+import { ImageViewer } from '../shared/ImageViewer';
+import { ProductDetails } from '../shared/ProductDetails';
+import { SizeSelector } from '../shared/SizeSelector';
 import { formatCurrency } from '../../utils/formatCurrency';
 
 interface ClothingModalProps {
@@ -43,7 +43,7 @@ export function ClothingModal({ product, onClose }: ClothingModalProps) {
         
         <div className="relative w-full max-w-6xl mx-auto flex flex-col lg:flex-row bg-spotify-black shadow-xl">
           <div className="w-full lg:w-1/2 bg-[#111111] p-8">
-            <ProductImages images={product.images} title={product.title} />
+            <ImageViewer images={product.images} title={product.title} />
           </div>
 
           <div className="w-full lg:w-1/2 p-6 lg:p-8 space-y-6 overflow-y-auto max-h-screen">

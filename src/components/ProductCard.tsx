@@ -7,11 +7,12 @@ interface ProductCardProps extends Product {}
 
 export function ProductCard(props: ProductCardProps) {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const originalPrice = props.price * 2.5;
 
   if (!props.images?.[0]) {
     return null;
   }
+
+  const discountPercentage = Math.round(((props.originalPrice - props.price) / props.originalPrice) * 100);
 
   return (
     <>
@@ -53,11 +54,11 @@ export function ProductCard(props: ProductCardProps) {
                   {formatCurrency(props.price)}
                 </span>
                 <span className="text-sm text-gray-400 line-through">
-                  {formatCurrency(originalPrice)}
+                  {formatCurrency(props.originalPrice)}
                 </span>
               </div>
               <span className="text-xs text-red-400 font-medium">
-                {Math.round(((originalPrice - props.price) / originalPrice) * 100)}% OFF
+                {discountPercentage}% OFF
               </span>
             </div>
             <button 

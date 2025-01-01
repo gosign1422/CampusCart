@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { X, ShoppingCart } from 'lucide-react';
 import { useCart } from '../../context/CartContext';
 import { Product } from '../../types/product';
-import { ImageViewer } from '../ImageViewer';
-import { ProductDetails } from './ProductDetails';
+import { ImageViewer } from '../shared/ImageViewer';
+import { ProductDetails } from '../shared/ProductDetails';
+import { SizeSelector } from '../shared/SizeSelector';
 import { formatCurrency } from '../../utils/formatCurrency';
 
 interface ProductDetailModalProps {
@@ -13,15 +14,21 @@ interface ProductDetailModalProps {
 
 export function ProductDetailModal({ product, onClose }: ProductDetailModalProps) {
   const { dispatch } = useCart();
+  const [selectedSize, setSelectedSize] = useState<string>('');
   const discountPercentage = Math.round(((product.originalPrice - product.price) / product.originalPrice) * 100);
 
   const handleAddToCart = () => {
+    if (product.sizes && !selectedSize) {
+      alert('Please select a size');
+      return;
+    }
+
     dispatch({
       type: 'ADD_ITEM',
       payload: {
-        id: product.id,
+        id: product.sizes ? `${product.id}-${selectedSize}` : product.id,
         images: product.images,
-        title: product.title,
+        title: product.sizes ? `${product.title} - ${selectedSize}` : product.title,
         price: product.price,
         quantity: 1,
       },
@@ -35,10 +42,8 @@ export function ProductDetailModal({ product, onClose }: ProductDetailModalProps
         <div className="fixed inset-0 bg-black opacity-75" onClick={onClose} />
         
         <div className="relative w-full max-w-6xl mx-auto flex flex-col lg:flex-row bg-spotify-black shadow-xl">
-          <div className="w-full lg:w-1/2 bg-[#111111]">
-            <div className="h-full">
-              <ImageViewer images={product.images} />
-            </div>
+          <div className="w-full lg:w-1/2 bg-[#111111] p-8">
+            <ImageViewer images={product.images} title={product.title} />
           </div>
 
           <div className="w-full lg:w-1/2 p-6 lg:p-8 space-y-6 overflow-y-auto max-h-screen">
@@ -74,6 +79,14 @@ export function ProductDetailModal({ product, onClose }: ProductDetailModalProps
                 {discountPercentage}% OFF
               </span>
             </div>
+
+            {product.sizes && (
+              <SizeSelector
+                sizes={product.sizes}
+                selectedSize={selectedSize}
+                onSizeSelect={setSelectedSize}
+              />
+            )}
 
             <button
               onClick={handleAddToCart}
