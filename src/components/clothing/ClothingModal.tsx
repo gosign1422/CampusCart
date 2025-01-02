@@ -5,6 +5,7 @@ import { Product } from '../../types/product';
 import { ImageGallery } from '../shared/ImageGallery/ImageGallery';
 import { ProductDetails } from '../shared/ProductDetails';
 import { SizeSelector } from '../shared/SizeSelector';
+import { DeliveryInfo } from '../shared/DeliveryInfo';
 import { formatCurrency } from '../../utils/formatCurrency';
 
 interface ClothingModalProps {
@@ -82,6 +83,8 @@ export function ClothingModal({ product, onClose }: ClothingModalProps) {
                 {discountPercentage}% OFF
               </span>
             </div>
+
+            <DeliveryInfo />
 
             {product.sizes && (
               <>

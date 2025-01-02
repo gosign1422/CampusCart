@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ShoppingBag, Menu } from 'lucide-react';
+import { ShoppingBag, Menu, Instagram } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
 import { MobileMenu } from './MobileMenu';
@@ -50,6 +50,15 @@ export function Navbar() {
         </div>
 
         <div className="flex items-center space-x-4">
+          <a
+            href="https://www.instagram.com/upes_campuscart/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hidden md:flex items-center space-x-2 bg-spotify-green text-black px-4 py-2 rounded-full hover:bg-green-400 transition-all duration-300 transform hover:scale-105 font-semibold"
+          >
+            <span>Want to Sell?</span>
+          </a>
+
           <button 
             className="relative text-white hover:text-spotify-green transition-colors"
             onClick={() => dispatch({ type: 'TOGGLE_CART' })}

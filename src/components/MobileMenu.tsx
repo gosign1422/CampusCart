@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { X } from 'lucide-react';
+import { X, Instagram } from 'lucide-react';
 
 interface MobileMenuProps {
   isOpen: boolean;
@@ -50,6 +50,18 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
           >
             ABOUT
           </Link>
+
+          <div className="pt-4 border-t border-gray-800">
+            <a
+              href="https://www.instagram.com/upes_campuscart/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center space-x-2 bg-spotify-green text-black px-4 py-2 rounded-full hover:bg-green-400 transition-all duration-300 transform hover:scale-105 font-semibold"
+              onClick={onClose}
+            >
+              <span>Want to Sell?</span>
+            </a>
+          </div>
         </nav>
       </div>
     </div>

@@ -7,7 +7,7 @@ export function SellerBanner() {
       <div 
         className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-20"
         style={{
-          backgroundImage: 'url("https://images.unsplash.com/photo-1462331940025-496dfbfc7564?auto=format&fit=crop&q=80")',
+          backgroundImage: 'url("")',
         }}
       />
       <div className="absolute inset-0 bg-gradient-to-r from-spotify-black via-transparent to-spotify-black" />
