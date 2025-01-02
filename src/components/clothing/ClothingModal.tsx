@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { X, ShoppingCart } from 'lucide-react';
-import { Product } from '../../types/product';
 import { useCart } from '../../context/CartContext';
+import { Product } from '../../types/product';
 import { ImageGallery } from '../shared/ImageGallery/ImageGallery';
 import { ProductDetails } from '../shared/ProductDetails';
 import { SizeSelector } from '../shared/SizeSelector';
@@ -15,22 +15,25 @@ interface ClothingModalProps {
 export function ClothingModal({ product, onClose }: ClothingModalProps) {
   const { dispatch } = useCart();
   const [selectedSize, setSelectedSize] = useState<string>('');
+  const [sizeError, setSizeError] = useState(false);
   const discountPercentage = Math.round(((product.originalPrice - product.price) / product.originalPrice) * 100);
 
   const handleAddToCart = () => {
     if (!selectedSize) {
-      alert('Please select a size');
+      setSizeError(true);
       return;
     }
+    setSizeError(false);
 
     dispatch({
       type: 'ADD_ITEM',
       payload: {
-        id: `${product.id}-${selectedSize}`,
-        images: product.images,
-        title: `${product.title} - ${selectedSize}`,
+        id: product.id,
+        title: product.title,
         price: product.price,
+        size: selectedSize,
         quantity: 1,
+        images: product.images
       },
     });
     onClose();
@@ -46,7 +49,7 @@ export function ClothingModal({ product, onClose }: ClothingModalProps) {
             <ImageGallery images={product.images} title={product.title} />
           </div>
 
-          <div className="w-full lg:w-1/2 p-6 lg:p-8 space-y-6 overflow-y-auto max-h-screen">
+          <div className="w-full lg:w-2/5 p-6 lg:p-8 space-y-6 overflow-y-auto max-h-screen">
             <button
               onClick={onClose}
               className="absolute right-4 top-4 text-gray-400 hover:text-white transition-colors"
@@ -81,11 +84,16 @@ export function ClothingModal({ product, onClose }: ClothingModalProps) {
             </div>
 
             {product.sizes && (
-              <SizeSelector
-                sizes={product.sizes}
-                selectedSize={selectedSize}
-                onSizeSelect={setSelectedSize}
-              />
+              <>
+                <SizeSelector
+                  sizes={product.sizes}
+                  selectedSize={selectedSize}
+                  onSizeSelect={setSelectedSize}
+                />
+                {sizeError && (
+                  <p className="text-red-500 text-sm">Please select a size</p>
+                )}
+              </>
             )}
 
             <button

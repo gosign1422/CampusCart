@@ -15,22 +15,25 @@ interface ProductDetailModalProps {
 export function ProductDetailModal({ product, onClose }: ProductDetailModalProps) {
   const { dispatch } = useCart();
   const [selectedSize, setSelectedSize] = useState<string>('');
+  const [sizeError, setSizeError] = useState(false);
   const discountPercentage = Math.round(((product.originalPrice - product.price) / product.originalPrice) * 100);
 
   const handleAddToCart = () => {
     if (product.sizes && !selectedSize) {
-      alert('Please select a size');
+      setSizeError(true);
       return;
     }
+    setSizeError(false);
 
     dispatch({
       type: 'ADD_ITEM',
       payload: {
-        id: product.sizes ? `${product.id}-${selectedSize}` : product.id,
-        images: product.images,
-        title: product.sizes ? `${product.title} - ${selectedSize}` : product.title,
+        id: product.id,
+        title: product.title,
         price: product.price,
+        size: selectedSize,
         quantity: 1,
+        images: product.images
       },
     });
     onClose();
@@ -81,11 +84,16 @@ export function ProductDetailModal({ product, onClose }: ProductDetailModalProps
             </div>
 
             {product.sizes && (
-              <SizeSelector
-                sizes={product.sizes}
-                selectedSize={selectedSize}
-                onSizeSelect={setSelectedSize}
-              />
+              <>
+                <SizeSelector
+                  sizes={product.sizes}
+                  selectedSize={selectedSize}
+                  onSizeSelect={setSelectedSize}
+                />
+                {sizeError && (
+                  <p className="text-red-500 text-sm">Please select a size</p>
+                )}
+              </>
             )}
 
             <button
