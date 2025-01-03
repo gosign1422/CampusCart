@@ -1,5 +1,5 @@
 import React from 'react';
-import { ShoppingBag } from 'lucide-react';
+import { ShoppingBag, Instagram, MessageCircle } from 'lucide-react';
 
 export function AboutPage() {
   return (
@@ -18,16 +18,9 @@ export function AboutPage() {
           </div>
 
           <div className="prose prose-invert max-w-none">
-            <p className="text-lg text-spotify-lightgray leading-relaxed mb-8">
-              CampusCart is your premier destination for campus fashion and accessories at UPES, Dehradun. 
-              We understand the unique style needs of college students and provide carefully curated collections 
-              that blend comfort, style, and affordability.
-            </p>
-
             <h2 className="text-2xl font-bold text-white mb-4">Our Mission</h2>
             <p className="text-spotify-lightgray mb-8">
-              To provide UPES students with high-quality, trendy, and affordable fashion choices that help them 
-              express their unique personality while maintaining comfort for their academic journey.
+              To provide a unified platform enabling students of UPES to sell their creations to their peers and achieve financial independence.
             </p>
 
             <h2 className="text-2xl font-bold text-white mb-4">Why Choose Us?</h2>
@@ -50,10 +43,30 @@ export function AboutPage() {
               </li>
             </ul>
 
-            <h2 className="text-2xl font-bold text-white mb-4">Visit Us</h2>
-            <p className="text-spotify-lightgray">
-              Find us at UPES Bidholi Campus, Dehradun. We're here to help you discover your perfect campus style!
+            <h2 className="text-2xl font-bold text-white mb-4">Contact Us</h2>
+            <p className="text-spotify-lightgray mb-4">
+              For any Queries, Issues, Suggestions, DM here :-
             </p>
+            <div className="flex gap-4">
+              <a
+                href="https://www.instagram.com/upes_campuscart/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center space-x-2 bg-spotify-green text-black px-6 py-3 rounded-full hover:bg-green-400 transition-all duration-300 transform hover:scale-105 font-semibold"
+              >
+                <Instagram size={24} />
+                <span>Instagram</span>
+              </a>
+              <a
+                href="https://wa.me/917906853634"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center space-x-2 bg-spotify-green text-black px-6 py-3 rounded-full hover:bg-green-400 transition-all duration-300 transform hover:scale-105 font-semibold"
+              >
+                <MessageCircle size={24} />
+                <span>WhatsApp</span>
+              </a>
+            </div>
           </div>
         </div>
       </div>

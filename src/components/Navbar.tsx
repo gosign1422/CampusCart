@@ -3,11 +3,20 @@ import { ShoppingBag, Menu, Instagram } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
 import { MobileMenu } from './MobileMenu';
+import { useActiveRoute } from '../hooks/useActiveRoute';
 
 export function Navbar() {
   const { state, dispatch } = useCart();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const { isActive } = useActiveRoute();
   const itemCount = state.items.reduce((sum, item) => sum + item.quantity, 0);
+
+  const navLinkClass = (path: string) =>
+    `text-lg font-bold tracking-wide transition-all duration-300 hover:scale-105 transform relative ${
+      isActive(path) ? 'text-spotify-green' : 'text-white hover:text-spotify-green'
+    } ${
+      isActive(path) ? 'after:content-[""] after:absolute after:left-0 after:bottom-[-4px] after:w-full after:h-[2px] after:bg-spotify-green' : ''
+    }`;
 
   return (
     <nav className="fixed w-full z-50 bg-spotify-black text-white py-4">
@@ -22,29 +31,17 @@ export function Navbar() {
           </span>
         </Link>
         
-        <div className="hidden md:flex items-center space-x-12">
-          <Link 
-            to="/" 
-            className="text-lg font-bold tracking-wide hover:text-spotify-green transition-all duration-300 hover:scale-105 transform"
-          >
+        <div className="hidden lg:flex items-center space-x-12">
+          <Link to="/" className={navLinkClass('/')}>
             HOME
           </Link>
-          <Link 
-            to="/clothing" 
-            className="text-lg font-bold tracking-wide hover:text-spotify-green transition-all duration-300 hover:scale-105 transform"
-          >
+          <Link to="/clothing" className={navLinkClass('/clothing')}>
             CLOTHING
           </Link>
-          <Link 
-            to="/accessories" 
-            className="text-lg font-bold tracking-wide hover:text-spotify-green transition-all duration-300 hover:scale-105 transform"
-          >
-            ACCESSORIES
+          <Link to="/room-decor" className={navLinkClass('/room-decor')}>
+            ROOM DECOR
           </Link>
-          <Link 
-            to="/about" 
-            className="text-lg font-bold tracking-wide hover:text-spotify-green transition-all duration-300 hover:scale-105 transform"
-          >
+          <Link to="/about" className={navLinkClass('/about')}>
             ABOUT
           </Link>
         </div>
@@ -54,7 +51,7 @@ export function Navbar() {
             href="https://www.instagram.com/upes_campuscart/"
             target="_blank"
             rel="noopener noreferrer"
-            className="hidden md:flex items-center space-x-2 bg-spotify-green text-black px-4 py-2 rounded-full hover:bg-green-400 transition-all duration-300 transform hover:scale-105 font-semibold"
+            className="hidden lg:flex items-center space-x-2 bg-spotify-green text-black px-4 py-2 rounded-full hover:bg-green-400 transition-all duration-300 transform hover:scale-105 font-semibold"
           >
             <span>Want to Sell?</span>
           </a>
@@ -72,7 +69,7 @@ export function Navbar() {
           </button>
 
           <button 
-            className="md:hidden text-white hover:text-spotify-green transition-colors"
+            className="lg:hidden text-white hover:text-spotify-green transition-colors"
             onClick={() => setIsMobileMenuOpen(true)}
           >
             <Menu size={28} />

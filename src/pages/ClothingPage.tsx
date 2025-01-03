@@ -6,10 +6,9 @@ export function ClothingPage() {
   const [animate, setAnimate] = useState(false);
 
   useEffect(() => {
-    // Trigger animation after component mounts
     const timer = setTimeout(() => {
       setAnimate(true);
-    }, 500); // Small delay for better visual effect
+    }, 500);
 
     return () => clearTimeout(timer);
   }, []);
@@ -24,10 +23,12 @@ export function ClothingPage() {
       {sellers.map((seller) => (
         <div key={seller.id} className="mb-16">
           <div className="flex flex-col items-center mb-12">
+          <link
+              href="https://fonts.googleapis.com/css2?family=Mrs+Saint+Delafield&display=swap"
+              rel="stylesheet"
+            />
             <style>
-              {`
-                @import url('https://fonts.googleapis.com/css2?family=Mrs+Saint+Delafield&display=swap');
-                
+              {`                
                 .celestia-underline {
                   transform: scaleX(0);
                   transition: transform 1s ease-out;

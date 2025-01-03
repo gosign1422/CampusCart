@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { X, Instagram } from 'lucide-react';
+import { useActiveRoute } from '../hooks/useActiveRoute';
 
 interface MobileMenuProps {
   isOpen: boolean;
@@ -8,7 +9,16 @@ interface MobileMenuProps {
 }
 
 export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
+  const { isActive } = useActiveRoute();
+
   if (!isOpen) return null;
+
+  const navLinkClass = (path: string) =>
+    `block text-lg font-bold tracking-wide transition-colors relative ${
+      isActive(path) ? 'text-spotify-green' : 'text-white hover:text-spotify-green'
+    } ${
+      isActive(path) ? 'after:content-[""] after:absolute after:left-0 after:bottom-[-4px] after:w-full after:h-[2px] after:bg-spotify-green' : ''
+    }`;
 
   return (
     <div className="fixed inset-0 z-50 lg:hidden">
@@ -25,28 +35,28 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
           <Link 
             to="/" 
             onClick={onClose}
-            className="block text-lg font-bold tracking-wide hover:text-spotify-green transition-colors"
+            className={navLinkClass('/')}
           >
             HOME
           </Link>
           <Link 
             to="/clothing" 
             onClick={onClose}
-            className="block text-lg font-bold tracking-wide hover:text-spotify-green transition-colors"
+            className={navLinkClass('/clothing')}
           >
             CLOTHING
           </Link>
           <Link 
-            to="/accessories" 
+            to="/room-decor" 
             onClick={onClose}
-            className="block text-lg font-bold tracking-wide hover:text-spotify-green transition-colors"
+            className={navLinkClass('/room-decor')}
           >
-            ACCESSORIES
+            ROOM DECOR
           </Link>
           <Link 
             to="/about" 
             onClick={onClose}
-            className="block text-lg font-bold tracking-wide hover:text-spotify-green transition-colors"
+            className={navLinkClass('/about')}
           >
             ABOUT
           </Link>

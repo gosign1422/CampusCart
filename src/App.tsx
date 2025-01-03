@@ -8,7 +8,7 @@ import { ScrollToTop } from './components/ScrollToTop';
 import { CartProvider } from './context/CartContext';
 import { HomePage } from './pages/HomePage';
 import { ClothingPage } from './pages/ClothingPage';
-import { AccessoriesPage } from './pages/AccessoriesPage';
+import { RoomDecorPage } from './pages/RoomDecorPage';
 import { AboutPage } from './pages/AboutPage';
 import { CheckoutPage } from './pages/CheckoutPage';
 import { PolicyPages } from './pages/PolicyPages';
@@ -24,7 +24,7 @@ export default function App() {
             <Routes>
               <Route path="/" element={<HomePage />} />
               <Route path="/clothing" element={<ClothingPage />} />
-              <Route path="/accessories" element={<AccessoriesPage />} />
+              <Route path="/room-decor" element={<RoomDecorPage />} />
               <Route path="/about" element={<AboutPage />} />
               <Route path="/checkout" element={<CheckoutPage />} />
               <Route path="/privacy" element={<PolicyPages />} />

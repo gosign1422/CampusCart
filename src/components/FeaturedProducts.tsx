@@ -10,7 +10,7 @@ export function FeaturedProducts() {
         <h2 className="text-4xl font-bold text-white mb-4">Featured Products</h2>
         <div className="h-1 w-24 bg-spotify-green rounded-full"></div>
         <p className="mt-4 text-spotify-lightgray text-center max-w-2xl">
-          Discover our curated selection of premium campus essentials, from trendy apparel to stylish accessories.
+          Discover our curated selection of premium campus essentials, from trendy apparel to stylish room decor.
           All at exclusive student-friendly prices.
         </p>
       </div>
